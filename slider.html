@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boot Animation Real Look | peymanx</title>
+  <style>
+    @font-face {
+      font-family: 'SegoeBoot';
+      src: url('./segoen_slboot.ttf');
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'SegoeBoot', sans-serif;
+      font-size: 60px;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    #centerContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    img {
+      width: 220px;
+      height: auto;
+      object-fit: contain;
+      padding-bottom: 200px;
+    }
+
+    #anim {
+      font-family: 'SegoeBoot', sans-serif;
+    }
+
+    #sliderContainer {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type=range] {
+      writing-mode: bt-lr;
+      -webkit-appearance: slider-vertical;
+      width: 200px;
+      height: 8px;
+      transform: rotate(-90deg);
+    }
+
+    .label {
+      font-size: 14px;
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- مرکز صفحه: لوگو + انیمیشن -->
+  <div id="centerContent">
+    <img src="./logo_real.png" alt="Logo">
+    <div id="anim"></div>
+  </div>
+
+  <!-- اسلایدر در سمت راست -->
+  <div id="sliderContainer">
+    <div class="label">سرعت</div>
+    <input type="range" min="0" max="400" value="20" id="speedSlider">
+  </div>
+
+  <script>
+    const start = 0xE052;
+    const end = 0xE0C6;
+    const chars = [];
+
+    for (let i = start; i <= end; i++) {
+      chars.push(String.fromCharCode(i));
+    }
+
+    const animEl = document.getElementById('anim');
+    const speedSlider = document.getElementById('speedSlider');
+    let index = 0;
+    let interval = null;
+
+    function startAnimation(speed) {
+      if (interval) clearInterval(interval);
+      interval = setInterval(() => {
+        animEl.textContent = chars[index];
+        index = (index + 1) % chars.length;
+      }, speed);
+    }
+
+    startAnimation(speedSlider.value);
+
+    speedSlider.addEventListener('input', () => {
+      startAnimation(speedSlider.value);
+    });
+  </script>
+
+</body>
+</html>

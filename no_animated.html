@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>No Animated | peymanx</title>
+  <style>
+    @font-face {
+      font-family: 'SegoeBoot';
+      src: url('./segoen_slboot.ttf'); /* مسیر فایل فونت */
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'SegoeBoot', sans-serif;
+      font-size: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 20px;
+    }
+
+    img {
+      width: 180px;
+      height: auto;
+      object-fit: contain;
+      padding-bottom: 200px;
+    }
+
+    #anim {
+      font-family: 'SegoeBoot', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- عکس بالا -->
+  <img src="./logo_real.png" alt="Logo">
+
+
+  <!-- لودینگ -->
+  <div>
+    <p style=" font-family: 'SegoeBoot', sans-serif;">
+        
+    </p>
+</div>
+
+  <script>
+    const start = 0xE052; // ''
+    const end = 0xE0C6;   // ''
+    const chars = [];
+
+    for (let i = start; i <= end; i++) {
+      chars.push(String.fromCharCode(i));
+    }
+
+    const animEl = document.getElementById('anim');
+    let index = 0;
+
+    setInterval(() => {
+      animEl.textContent = chars[index];
+      index = (index + 1) % chars.length;
+    }, 20);
+  </script>
+
+</body>
+</html>

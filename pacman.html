@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boot Animation PacMan | peymanx</title>
+  <style>
+    @font-face {
+      font-family: 'SegoeBoot';
+      src: url('./fonts/vazir.TTF'); /* مسیر فایل فونت */
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'SegoeBoot', sans-serif;
+      font-size: 80px;
+      display: flex;
+      flex-direction: column;   
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 20px;
+    }
+
+    img {
+      width: 220px;
+      height: auto;
+      object-fit: contain;
+      padding-bottom: 200px;
+    }
+
+    #anim {
+      font-family: 'SegoeBoot', sans-serif;
+    }
+
+
+    .loader {
+        position: relative;
+        border: 24px solid #FFF;
+        border-radius: 50%;
+        box-sizing: border-box;
+        animation: eat 1s linear infinite;
+      }
+      .loader::after , .loader::before {
+        content: '';
+        position: absolute;
+        left: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        opacity: 0;
+        animation: move 2s linear infinite;
+      }
+
+      .loader::before {
+        animation-delay: 1s;
+      }
+
+      @keyframes eat {
+        0% , 49% { border-right-color: #FFF }
+        50% , 100% { border-right-color: #0000 }
+      }
+      @keyframes move {
+        0% { left: 75px ; opacity: 1}
+        50% { left: 0px; opacity: 1 }
+        52%, 100% { left: -5px; opacity: 0; }
+      }
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- عکس بالا -->
+  <img src="./images/logo_real.png" alt="Logo">
+
+
+  <!-- لودینگ -->
+  <span class="loader"></span>
+
+  <script>
+    const start = 0xFE81; // ''
+    const end = 0xFEF4;   // ''
+    const chars = [];
+
+    for (let i = start; i <= end; i++) {
+      chars.push(String.fromCharCode(i));
+    }
+
+    const animEl = document.getElementById('anim');
+    let index = 0;
+
+    setInterval(() => {
+      animEl.textContent = chars[index]+chars[index]+chars[index];
+      index = (index + 1) % chars.length ;
+    }, 60);
+  </script>
+
+</body>
+</html>

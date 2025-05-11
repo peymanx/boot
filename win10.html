@@ -13,7 +13,7 @@
       background-color: black;
       color: white;
       font-family: 'SegoeBoot', sans-serif;
-      font-size: 60px;
+      font-size: 50px;
       
       display: flex;
       flex-direction: column;
@@ -24,7 +24,7 @@
     }
 
     img {
-      width: 220px;
+      width: 250px;
       height: auto;
       object-fit: contain;
       padding-bottom: 200px;
@@ -38,15 +38,16 @@
 <body>
 
   <!-- عکس بالا -->
-  <img src="./images/logo_real.png" alt="Logo">
+  <img src="./images/win10.png" alt="Logo">
 
 
   <!-- لودینگ -->
   <div id="anim"></div>
 
   <script>
-    const start = 0xE100; // ''
-    const end = 0xE176;   // ''
+    const start = 0xE052; // ''
+    const end = 0xE0C6;   // ''
+
     const chars = [];
 
     for (let i = start; i <= end; i++) {

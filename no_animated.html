@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>No Animated | peymanx</title>
   <style>
     @font-face {
       font-family: 'SegoeBoot';
-      src: url('./fonts/segoen_slboot.ttf'); /* مسیر فایل فونت */
+      src: url('./fonts/segoen_slboot.ttf');
+      /* مسیر فایل فونت */
     }
 
     body {
@@ -34,37 +36,24 @@
     }
   </style>
 </head>
+
 <body>
 
-
   <!-- عکس بالا -->
-  <img src="./images/win11.png" alt="Logo">
+  <img src="./images/win10.png" alt="Logo">
 
 
   <!-- لودینگ -->
   <div>
     <p style=" font-family: 'SegoeBoot', sans-serif;">
-        
+      
     </p>
-</div>
+  </div>
 
   <script>
-    const start = 0xE052; // ''
-    const end = 0xE0C6;   // ''
-    const chars = [];
 
-    for (let i = start; i <= end; i++) {
-      chars.push(String.fromCharCode(i));
-    }
-
-    const animEl = document.getElementById('anim');
-    let index = 0;
-
-    setInterval(() => {
-      animEl.textContent = chars[index];
-      index = (index + 1) % chars.length;
-    }, 20);
   </script>
 
 </body>
+
 </html>

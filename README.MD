@@ -39,8 +39,4 @@ Here’s an example from `win11.html`:
 </script>
 ```
 
-## Deployment
-The project can be deployed to GitHub Pages using the workflow defined in `static.yml`. It automates the process of deploying static content to a GitHub Pages site.
 
-Let me know if you need help with any specific part of the project!
-```

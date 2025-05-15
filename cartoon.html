@@ -44,23 +44,31 @@
   <!-- لودینگ -->
   <div id="anim"></div>
 
-  <script>
-    const start = 0xE100; // ''
-    const end = 0xE176;   // ''
-    const chars = [];
+ <script>
+  const start = 0xE100;
+  const end = 0xE176;
+  const chars = [];
 
-    for (let i = start; i <= end; i++) {
-      chars.push(String.fromCharCode(i));
-    }
+  for (let i = start; i <= end; i++) {
+    chars.push(String.fromCharCode(i));
+  }
 
-    const animEl = document.getElementById('anim');
-    let index = 0;
+  const animEl = document.getElementById('anim');
+  let index = 0;
 
-    setInterval(() => {
-      animEl.textContent = chars[index];
-      index = (index + 1) % chars.length;
-    }, 30);
-  </script>
+  // تابع تولید رنگ بر اساس index
+  function getColor(index, total) {
+    const hue = Math.floor((index / total) * 360);
+    return `hsl(${hue}, 80%, 60%)`; // رنگ‌های شاد و متنوع
+  }
+
+  setInterval(() => {
+    animEl.textContent = chars[index];
+    animEl.style.color = getColor(index, chars.length);
+    index = (index + 1) % chars.length;
+  }, 30);
+</script>
+
 
 </body>
 </html>
